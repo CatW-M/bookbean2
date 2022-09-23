@@ -5,5 +5,22 @@ nav ul li {
 }
 
 h1 {
-  color: chartreuse;
+  color: rgb(128, 52, 17);
+}
+body {
+  background-image: url("../img/bg-book.jpg");
+  background-color: #afcad4;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#header {
+  font-size: 3rem;
+}
+
+.book-list {
+  margin-top: 50px;
+  visibility: hidden;
 }

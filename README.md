@@ -710,3 +710,6 @@ npm start
 `3` Push final changes to Github.
 
 `4` Make this repo a **Template** on Github for future projects (i.e. Project 2) ✅
+
+background image credit: Photo by <a href="https://unsplash.com/@sincerelymedia?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sincerely Media</a> on <a href="https://unsplash.com/s/photos/coffee-book?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
