@@ -8,7 +8,7 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
-console.log(`yooooooo`, SECRET_SESSION);
+console.log(SECRET_SESSION);
 
 app.set('view engine', 'ejs');
 
@@ -16,11 +16,13 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+
 app.use(session({
   secret: SECRET_SESSION,    // What we actually will be giving the user on our site as a session cookie
   resave: false,             // Save the session even if it's modified, make this false
   saveUninitialized: true    // If we have a new session, we save it, therefore making that true
 }));
+
 app.use(flash());            // flash middleware
 
 app.use(passport.initialize());      // Initialize passport
@@ -45,6 +47,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 //access to all of our auth routes GET /auth/login, GET /auth/signip POST routes
 app.use('/auth', require('./controllers/auth'));
+app.use('/books', isLoggedIn, require('./controllers/books'));
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
