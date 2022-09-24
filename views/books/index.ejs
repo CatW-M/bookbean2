@@ -3,8 +3,17 @@
     <p class="text-center">Search for a Favorite Book and We'll recommend a coffee to enjoy as you read!</p>
     <div class="row">
         <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12">
-            <input id="search-box" type="text" class="form-control" placeholder="Search Books!..">
-            <button id="search" class="btn btn-primary" onclick="">Submit</button>
+            <form method="POST" action="/books/results">
+                <input type="text" id="search" name="search" value="Search Books!..">
+                <button id="search" type="submit" class="btn btn-primary" onclick="">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12">
+            <form method="GET" action="/">
+                <button type="submit" class="btn btn-primary">Back to Homepage</button>
+            </form>
         </div>
     </div>
 </div>

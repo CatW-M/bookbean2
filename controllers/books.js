@@ -2,57 +2,61 @@ const express = require('express');
 const router = express.Router();
 const passport = require('../config/ppConfig');
 const db = require('../models');
-const bookUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
+const bookUrl = 'https://www.googleapis.com/books/v1/volumes';
 const placeholder = 'https://via.placeholder.com/150';
 require('dotenv').config();
 const axios = require('axios');
 
 //routes
 router.get('/', (req, res) => {
-    let books = await.db.book.findAll();
-    books = books.map(b => b.JSON());
-    console.log(books);
-    res.render('books/index', { books: books });
-})
-
-router.get('/search', (req, res) => {
     res.render('books/index');
-});
-
-router.get('/:id', async (req, res) => {
-    let book = await db.book.findOne({
-        where: { id:req.params.id}
-    });
-    book = book.toJSON();
-    console.log('=====this is the show route====');
-    console.log(book);
-    res.render('books/show', {book: book});
 })
 
+router.get('/new', (req, res) => {
+    let books = {
+        params: { q: req.body.search },
+                apikey: process.env.API_KEY
+    };
+    axios.get(bookUrl, books)
+    .then(function (response) {
+        console.log(response.data)
+    })
+});
 router.post('/new', async (req, res) => {
-    console.log('*****/new', req.body);
-    const newBook = await db.book.create({
+    console.log('NEWWWWW STUFFFF', req.body);
+    const newBook = await db.Book.create({
         title: req.body.title,
-        author: req.body.authors,
+        author: req.body.author,
         img: req.body.img,
         description: req.body.description,
-        userId: parseInt(req.body.userId)
-    });
-    console.log(newbook.toJSON());
+        userId: parseInt(req.body.userId),
+        categories: req.body.categories
+    })
+    console.log(newBook.toJSON());
     res.redirect('/books');
-});
+})
 
 router.post('/results', async (req, res) => {
-    console.log('>>>>SEARCH DATA', req.body);
+    console.log('>>>>SEARCH DATA', req.body.search);
+    // we have user input search
+    // make request to the api with that search
     const options = {
-        method: 'GET',
-        url: bookUrl,
-        params: { q: req.body.search },
-        headers: {
-            
-        }
-
+        params: { 
+            q: req.body.search,
+            maxResults: 40,
+         },
+        // headers: {
+        //     apikey: process.env.API_KEY
+        // }
     }
+
+    const results = await axios.get(bookUrl, options);
+    console.log(`Back with book results`);
+    console.log(results.data.items[0].volumeInfo.thumbnail);
+
+    //render the books/results on page
+    res.render('books/results', {books: results.data.items })
+
 })
 
 
