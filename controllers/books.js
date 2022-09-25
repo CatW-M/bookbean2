@@ -12,15 +12,36 @@ router.get('/', (req, res) => {
     res.render('books/index');
 })
 
-router.post('/detailspassthrough', async (req, res) => {
-    console.log('*******BOOOK*******', book)
-    res.render('books/details', { book });
+router.post('/detailspassthrough', async (req, res) => {   
+    let book = JSON.parse(req.body.bookJSONstring);
+    // console.log('*******BOOOK*******', book) ;
+    const theCoffees = await db.coffee.findAll();
+        const randomIndex = Math.floor(Math.random() * theCoffees.length);
+        // console.log('LOOOOOOOOK******', randomIndex);
+        const coffeeRecommend = theCoffees[randomIndex];
+        console.log('PIIIIICK ME*********', coffeeRecommend.name);
+
+    res.render('books/details', { book, coffee: coffeeRecommend });
 })
 
 router.get('/details', async (req, res) => {
-    res.render('books/details', { book: JSON.parse(req.body.bookJSONstring) });
+    
+            
+    res.render('books/details', { book: JSON.parse(req.body.bookJSONstring)});
 })
 
+
+// router.get('/new', (req, res) => {
+//     let books = {
+//         params: { q: req.body.search },
+//                 apikey: process.env.API_KEY
+//     };
+//     axios.get(bookUrl, books)
+//     .then(function (response) {
+//         // console.log(response.data)
+//         res.redirect()
+//     })
+// });
 router.post('/new', async (req, res) => {
     console.log('NEWWWWW STUFFFF', req.body);
     const newBook = await db.Book.create({
@@ -40,10 +61,10 @@ router.post('/results', async (req, res) => {
     // we have user input search
     // make request to the api with that search
     const options = {
-        params: {
+        params: { 
             q: req.body.search,
             maxResults: 40,
-        },
+         },
         // headers: {
         //     apikey: process.env.API_KEY
         // }
@@ -55,7 +76,7 @@ router.post('/results', async (req, res) => {
     // console.log(results.data.items[0].volumeInfo.thumbnail);
 
     //render the books/results on page
-    res.render('books/results', { books: results.data.items })
+    res.render('books/results', {books: results.data.items })
 
 });
 

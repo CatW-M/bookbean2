@@ -5,12 +5,16 @@
 </div>
 <br>
 <div class="booklist">
-    <h2 class="text-center">Your Bookshelf</h2>
+    <h1 class="text-center">Your Bookshelf</h1>
     <div class="row">
         <% the_books.forEach((book) => { %>
-        <h2><%= book.dataValues.title %></h2>
-        <h3><%= book.dataValues.author %> </h3>
-        <img src=<%= book.dataValues.img %> >
+            <div class="col">
+                <h3><%= book.dataValues.title %></h3>
+                <h4><%= book.dataValues.author %> </h4>
+                <div class="img">
+                    <img src=<%= book.dataValues.img %> >
+                </div>
+            </div>
         <% }); %>
 </div>
     <div id="list-output">

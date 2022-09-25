@@ -4,40 +4,42 @@
 <div class="container">
     <div id="title" class="text-center mt-5">Book Bean</div>
     <div class="row">
-        <form method="get" action="/books/search">
+        <form method="get" action="/books">
             <button type="submit">Back to Search</button>
         </form>
     </div>
-</div>
+
 <div class="book-list"></div>
     <h2 class="text-center">Search Results</h2>
-    <div id="list-output" class="">
         <div class="row">
-            <% books.forEach((book) => { %>
-            <h2><a href="/books/detailspassthrough"><%= book.volumeInfo.title %></a></h2>
-            <h3><%= book.volumeInfo.authors %> </h3>
-            <img src=<%= book.volumeInfo.imageLinks?.thumbnail %> >
-    </div>
-</div>
-<div class="form">
-    <div class="row">
-        <form method="POST" action="/books/new">
-        <input type="text" value="<%= book.volumeInfo.title  %>" name="title" hidden>
-        <input type="text" value="<%= book.volumeInfo.authors %>" name="author" hidden>
-        <input type="text" value="<%= book.volumeInfo.imageLinks?.thumbnail %>" name="img" hidden>
-        <input type="text" value="<%= book.volumeInfo.description %>" name="description" hidden>
-        <input type="text" value="<%= currentUser.id %>" name="userId" hidden>
-        <input type="text" value="<%= book.volumeInfo.categories %>" name="categories" hidden>
-        <br>
-        <button type="submit">Add Book to Your Library</button>
-        </form>
-        <form method="POST" action="/books/detailspassthrough/" >
-        <input type="text" value="<%= JSON.stringify(book) %>" name="bookJSONstring" hidden>
-        <button type="submit">Get Coffee Recommendations</button>
-        </form>
-    </div>
-</div>
+            <div class="col">
+                <% books.forEach((book) => { %>
+                <h2><%= book.volumeInfo.title %></h2>
+                <h3><%= book.volumeInfo.authors %> </h3>
+                <img src=<%= book.volumeInfo.imageLinks?.thumbnail %> >
+            </div>
+            <div class="form">
+                <div class="row">
+                    <form method="POST" action="/books/new">
+                        <input type="text" value="<%= book.volumeInfo.title  %>" name="title" hidden>
+                        <input type="text" value="<%= book.volumeInfo.authors %>" name="author" hidden>
+                        <input type="text" value="<%= book.volumeInfo.imageLinks?.thumbnail %>" name="img" hidden>
+                        <input type="text" value="<%= book.volumeInfo.description %>" name="description" hidden>
+                        <input type="text" value="<%= currentUser.id %>" name="userId" hidden>
+                        <input type="text" value="<%= book.volumeInfo.categories %>" name="categories" hidden>
+                        <br>
+                        <button type="submit">Add Book to Your Library</button>
+                    </form>
+                    <form method="POST" action="/books/detailspassthrough/" >
+                        <input type="text" value="<%= JSON.stringify(book) %>" name="bookJSONstring" hidden>
+                        <button type="submit">Get Book Detail/Coffee Recommendations</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
     <br>
     <br>
  <% }) %>
+</div>
 
