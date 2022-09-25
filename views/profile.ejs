@@ -1,12 +1,18 @@
 
-
-<h3 class="text-center">Welcome to your profile, <%= name %></h3>
-<h5 class="text-center">(<%= email %>)</h5>
-
+<div class="substance"></div>
+    <h3 class="text-center">Welcome to your profile, <%= name %></h3>
+        <h5 class="text-center">(<%= email %>)</h5>
+</div>
 <br>
 <div class="booklist">
     <h2 class="text-center">Your Bookshelf</h2>
-    Placeholder
+    <div class="row">
+        <% the_books.forEach((book) => { %>
+        <h2><%= book.dataValues.title %></h2>
+        <h3><%= book.dataValues.author %> </h3>
+        <img src=<%= book.dataValues.img %> >
+        <% }); %>
+</div>
     <div id="list-output">
         <div class="row"></div>
     </div>

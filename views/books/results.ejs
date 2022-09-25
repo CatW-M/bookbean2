@@ -14,7 +14,7 @@
     <div id="list-output" class="">
         <div class="row">
             <% books.forEach((book) => { %>
-            <h2><a href="/books/details"><%= book.volumeInfo.title %></a></h2>
+            <h2><a href="/books/detailspassthrough"><%= book.volumeInfo.title %></a></h2>
             <h3><%= book.volumeInfo.authors %> </h3>
             <img src=<%= book.volumeInfo.imageLinks?.thumbnail %> >
     </div>

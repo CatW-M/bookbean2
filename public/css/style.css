@@ -4,11 +4,15 @@ nav ul li {
   margin-right: .3em;
 }
 
+.container {
+  text-align: center;
+}
+
 h1 {
   color: rgb(128, 52, 17);
 }
 body {
-  background-image: url("../img/bg-book.jpg");
+  background-image: url("../assets/img/bg-book.jpg");
   background-color: #afcad4;
   height: 100%;
   background-position: center;
@@ -23,4 +27,8 @@ body {
 .book-list {
   margin-top: 50px;
   visibility: hidden;
+}
+
+.substance {
+  background-color: burlywood;
 }

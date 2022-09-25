@@ -8,6 +8,7 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 let methodOverride = require('method-override');
 const db = require('./models');
+const book = require('./models/book');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
@@ -43,9 +44,11 @@ app.get('/', (req, res) => {
 });
 
 // Add this above /auth controllers
-app.get('/profile', isLoggedIn, (req, res) => {
+app.get('/profile', isLoggedIn, async (req, res) => {
   const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
+  const the_books = await db.Book.findAll();
+  console.log(the_books);
+  res.render('profile', { id, name, email, the_books });
 });
 
 app.get('/profile/edit', isLoggedIn, (req, res) => {
