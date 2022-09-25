@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="detail">
+        <h1>
+            <%= book.volumeInfo.title %>
+        </h1>
+        <h2>By <%= book.volumeInfo.authors %>
+        </h2>
+        <img src="<%= book.volumeInfo.imageLinks?.thumbnail %>" alt="<%= book.volumeInfo.title %>">
+        <br>
+        <%= book.volumeInfo.description %>
+    </div>
+</div>
+
+Coffee Pairings

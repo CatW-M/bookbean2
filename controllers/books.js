@@ -12,16 +12,30 @@ router.get('/', (req, res) => {
     res.render('books/index');
 })
 
-router.get('/new', (req, res) => {
-    let books = {
-        params: { q: req.body.search },
-                apikey: process.env.API_KEY
-    };
-    axios.get(bookUrl, books)
-    .then(function (response) {
-        console.log(response.data)
-    })
-});
+router.post('/detailspassthrough', async (req, res) => {   
+    let book = JSON.parse(req.body.bookJSONstring);
+    console.log('*******BOOOK*******', book)   
+    res.render('books/details', { book });
+})
+
+router.get('/details', async (req, res) => {
+    
+            
+    res.render('books/details', { book: JSON.parse(req.body.bookJSONstring)});
+})
+
+
+// router.get('/new', (req, res) => {
+//     let books = {
+//         params: { q: req.body.search },
+//                 apikey: process.env.API_KEY
+//     };
+//     axios.get(bookUrl, books)
+//     .then(function (response) {
+//         // console.log(response.data)
+//         res.redirect()
+//     })
+// });
 router.post('/new', async (req, res) => {
     console.log('NEWWWWW STUFFFF', req.body);
     const newBook = await db.Book.create({
@@ -52,12 +66,14 @@ router.post('/results', async (req, res) => {
 
     const results = await axios.get(bookUrl, options);
     console.log(`Back with book results`);
-    console.log(results.data.items[0].volumeInfo.thumbnail);
+    console.log(results.data.items);
+    // console.log(results.data.items[0].volumeInfo.thumbnail);
 
     //render the books/results on page
     res.render('books/results', {books: results.data.items })
 
-})
+});
+
 
 
 
