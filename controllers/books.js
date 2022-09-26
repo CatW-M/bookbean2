@@ -54,7 +54,7 @@ router.post('/new', async (req, res) => {
         categories: req.body.categories
     })
     console.log(newBook.toJSON());
-    res.redirect('/books');
+    res.redirect('../profile');
 })
 
 router.post('/results', async (req, res) => {
@@ -88,24 +88,10 @@ router.delete('/:id', async (req, res) => {
 console.log('*********DELETE ROUTE**********');
 
 res.redirect('/books');
-})
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.get('/*', (req, res) => {
+    res.render('404')
+  });
 
 module.exports = router;

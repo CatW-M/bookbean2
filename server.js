@@ -90,10 +90,14 @@ app.get('/mybook/:id', isLoggedIn, async (req, res) => {
   // render the books/show page with the book
   res.render('mybook', { book });
 })
+
 //access to all of our auth routes GET /auth/login, GET /auth/signip POST routes
 app.use('/auth', require('./controllers/auth'));
 app.use('/books', isLoggedIn, require('./controllers/books'));
 
+app.get('/*', (req, res) => {
+  res.render('404')
+});
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
