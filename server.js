@@ -79,6 +79,17 @@ app.put('/profile/:id', isLoggedIn, async (req, res) => {
     res.render('edit');
   }
 });
+app.get('/mybook/:id', isLoggedIn, async (req, res) => {
+  let book = await db.Book.findOne({
+      where: { id: req.params.id }
+  });
+  book = book.toJSON();
+  console.log('===== this is the show route =====');
+  console.log(book);
+  // go to the db and grab one book
+  // render the books/show page with the book
+  res.render('mybook', { book });
+})
 //access to all of our auth routes GET /auth/login, GET /auth/signip POST routes
 app.use('/auth', require('./controllers/auth'));
 app.use('/books', isLoggedIn, require('./controllers/books'));

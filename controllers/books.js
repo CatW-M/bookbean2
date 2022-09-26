@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     res.render('books/index');
 })
 
+
 router.post('/detailspassthrough', async (req, res) => {   
     let book = JSON.parse(req.body.bookJSONstring);
     // console.log('*******BOOOK*******', book) ;
@@ -79,6 +80,15 @@ router.post('/results', async (req, res) => {
     res.render('books/results', {books: results.data.items })
 
 });
+
+router.delete('/:id', async (req, res) => {
+    let booksDeleted = await db.Book.destroy({
+        where: { id: req.params.id }
+    });
+console.log('*********DELETE ROUTE**********');
+
+res.redirect('/books');
+})
 
 
 
