@@ -4,11 +4,11 @@ Node.js/PostgresSQL book search and coffee recommendation application to Express
 
 ![Home Screen](/public/assets/img/homescreen.png)
 
-![Sample Profile](/assets/img/sampleprofile.png)
+![Sample Profile](/public/assets/img/sampleprofile.png)
 
-![Sample Search Results](/assets/img/searchresultsexample.png)
+![Sample Search Results](/public/assets/img/searchresultsexample.png)
 
-![Coffee Pairing Based On Book Selection](/assets/img/coffeesuggestionbookdetail.png)
+![Coffee Pairing Based On Book Selection](/public/assets/img/coffeesuggestionbookdetail.png)
 
 
 ## What it includes
