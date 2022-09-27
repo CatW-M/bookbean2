@@ -30,18 +30,6 @@ router.get('/details', async (req, res) => {
     res.render('books/details', { book: JSON.parse(req.body.bookJSONstring) });
 })
 
-
-// router.get('/new', (req, res) => {
-//     let books = {
-//         params: { q: req.body.search },
-//                 apikey: process.env.API_KEY
-//     };
-//     axios.get(bookUrl, books)
-//     .then(function (response) {
-//         // console.log(response.data)
-//         res.redirect()
-//     })
-// });
 router.post('/new', async (req, res) => {
     console.log('NEWWWWW STUFFFF', req.body);
     const newBook = await db.Book.create({
