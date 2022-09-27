@@ -29,6 +29,6 @@ body {
   visibility: hidden;
 }
 
-/* .row {
-  background-color: burlywood;
-} */
+.coffee__title {
+  text-align: center;
+}

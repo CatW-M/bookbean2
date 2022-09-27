@@ -12,6 +12,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    text-align: center;
   }
   
   #header {
@@ -68,4 +69,8 @@
     text-align: center;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .coffee-title {
+    text-align: center;
   }
