@@ -90,9 +90,13 @@ app.get('/mybook/:id', isLoggedIn, async (req, res) => {
   book = book.toJSON();
   console.log('===== this is the show route =====');
   console.log(book);
+  const theCoffees = await db.coffee.findAll();
+        const randomIndex = Math.floor(Math.random() * theCoffees.length);
+        // console.log('LOOOOOOOOK******', randomIndex);
+        const coffeeRecommend = theCoffees[randomIndex];
   // go to the db and grab one book
   // render the books/show page with the book
-  res.render('mybook', { book });
+  res.render('mybook', { book, coffee: coffeeRecommend });
 })
 
 //access to all of our auth routes GET /auth/login, GET /auth/signip POST routes
