@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, async (req, res) => {
-  const { id, name, email } = req.user.get(); 
+  const { id, name, email } = req.user.get();
   const the_books = await db.Book.findAll({
     where: {
       userId: id
@@ -68,14 +68,14 @@ app.put('/profile/:id', isLoggedIn, async (req, res) => {
       where: {
         id: req.params.id
       }
-  });
+    });
 
-  console.log('********** PUT ROUTE *************');
-  console.log('Users updated', usersUpdated);
-  console.log('***********************');
+    console.log('********** PUT ROUTE *************');
+    console.log('Users updated', usersUpdated);
+    console.log('***********************');
 
-  // redirect back to the profile page
-  res.redirect('/profile'); // route
+    // redirect back to the profile page
+    res.redirect('/profile'); // route
   } catch (error) {
     console.log('*********************ERROR***********************');
     console.log(error);
@@ -85,15 +85,15 @@ app.put('/profile/:id', isLoggedIn, async (req, res) => {
 });
 app.get('/mybook/:id', isLoggedIn, async (req, res) => {
   let book = await db.Book.findOne({
-      where: { id: req.params.id }
+    where: { id: req.params.id }
   });
   book = book.toJSON();
   console.log('===== this is the show route =====');
   console.log(book);
   const theCoffees = await db.coffee.findAll();
-        const randomIndex = Math.floor(Math.random() * theCoffees.length);
-        // console.log('LOOOOOOOOK******', randomIndex);
-        const coffeeRecommend = theCoffees[randomIndex];
+  const randomIndex = Math.floor(Math.random() * theCoffees.length);
+  // console.log('LOOOOOOOOK******', randomIndex);
+  const coffeeRecommend = theCoffees[randomIndex];
   // go to the db and grab one book
   // render the books/show page with the book
   res.render('mybook', { book, coffee: coffeeRecommend });

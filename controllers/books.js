@@ -13,21 +13,21 @@ router.get('/', (req, res) => {
 })
 
 
-router.post('/detailspassthrough', async (req, res) => {   
+router.post('/detailspassthrough', async (req, res) => {
     let book = JSON.parse(req.body.bookJSONstring);
     // console.log('*******BOOOK*******', book) ;
     const theCoffees = await db.coffee.findAll();
-        const randomIndex = Math.floor(Math.random() * theCoffees.length);
-        // console.log('LOOOOOOOOK******', randomIndex);
-        const coffeeRecommend = theCoffees[randomIndex];
+    const randomIndex = Math.floor(Math.random() * theCoffees.length);
+    // console.log('LOOOOOOOOK******', randomIndex);
+    const coffeeRecommend = theCoffees[randomIndex];
 
     res.render('books/details', { book, coffee: coffeeRecommend });
 })
 
 router.get('/details', async (req, res) => {
-    
-            
-    res.render('books/details', { book: JSON.parse(req.body.bookJSONstring)});
+
+
+    res.render('books/details', { book: JSON.parse(req.body.bookJSONstring) });
 })
 
 
@@ -61,10 +61,10 @@ router.post('/results', async (req, res) => {
     // we have user input search
     // make request to the api with that search
     const options = {
-        params: { 
+        params: {
             q: req.body.search,
             maxResults: 40,
-         },
+        },
         // headers: {
         //     apikey: process.env.API_KEY
         // }
@@ -76,7 +76,7 @@ router.post('/results', async (req, res) => {
     // console.log(results.data.items[0].volumeInfo.thumbnail);
 
     //render the books/results on page
-    res.render('books/results', {books: results.data.items })
+    res.render('books/results', { books: results.data.items })
 
 });
 
@@ -84,13 +84,13 @@ router.delete('/:id', async (req, res) => {
     let booksDeleted = await db.Book.destroy({
         where: { id: req.params.id }
     });
-console.log('*********DELETE ROUTE**********');
+    console.log('*********DELETE ROUTE**********');
 
-res.redirect('/books');
+    res.redirect('/books');
 });
 
 router.get('/*', (req, res) => {
     res.render('404')
-  });
+});
 
 module.exports = router;

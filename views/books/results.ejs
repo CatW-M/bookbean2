@@ -6,9 +6,9 @@
         <h1 class="fw-light">Results</h1>
         <p class="lead text-muted">Save a book to your bookshelf or get more details and coffee pairings.</p>
         <p>
-            <form method="get" action="/books">
-                <button type="submit">Back to Search</button>
-            </form>
+        <form method="get" action="/books">
+          <button type="submit">Back to Search</button>
+        </form>
         </p>
       </div>
     </div>
@@ -18,40 +18,43 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% books.forEach((book) => { %>
-            <div class="col">
-                <div class="card shadow-sm">
-                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<%= book.volumeInfo.imageLinks?.thumbnail %> ">
-                  <div class="card-body">
-                    <p class="card-text"><%= book.volumeInfo.title %> - <%= book.volumeInfo.authors %></p>
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                      
-                        <p>
-                        <!-- Form for adding book to profile -->
-                        <form method="POST" action="/books/new">
-                            <input type="text" value="<%= book.volumeInfo.title  %>" name="title" hidden>
-                            <input type="text" value="<%= book.volumeInfo.authors %>" name="author" hidden>
-                            <input type="text" value="<%= book.volumeInfo.imageLinks?.thumbnail %>" name="img" hidden>
-                            <input type="text" value="<%= book.volumeInfo.description %>" name="description" hidden>
-                            <input type="text" value="<%= currentUser.id %>" name="userId" hidden>
-                            <input type="text" value="<%= book.volumeInfo.categories %>" name="categories" hidden>
-                            <br>
-                            <button type="submit" class="btn btn-primary my-2">Add Book</button>
-                        </form>
-                        <form method="POST" action="/books/detailspassthrough/" >
-                            <input type="text" value="<%= JSON.stringify(book) %>" name="bookJSONstring" hidden>
-                            <button type="submit" class="btn btn-primary my-2">Book Details/Coffee Pairing</button>
-                        </form>
-                        </p>
-                    
-                    
-                    </div>
-                  </div>
+        <% books.forEach((book)=> { %>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                src="<%= book.volumeInfo.imageLinks?.thumbnail %> ">
+              <div class="card-body">
+                <p class="card-text">
+                  <%= book.volumeInfo.title %> - <%= book.volumeInfo.authors %>
+                </p>
+                <div class="col-lg-6 col-md-8 mx-auto">
+
+                  <p>
+                    <!-- Form for adding book to profile -->
+                  <form method="POST" action="/books/new">
+                    <input type="text" value="<%= book.volumeInfo.title  %>" name="title" hidden>
+                    <input type="text" value="<%= book.volumeInfo.authors %>" name="author" hidden>
+                    <input type="text" value="<%= book.volumeInfo.imageLinks?.thumbnail %>" name="img" hidden>
+                    <input type="text" value="<%= book.volumeInfo.description %>" name="description" hidden>
+                    <input type="text" value="<%= currentUser.id %>" name="userId" hidden>
+                    <input type="text" value="<%= book.volumeInfo.categories %>" name="categories" hidden>
+                    <br>
+                    <button type="submit" class="btn btn-primary my-2">Add Book</button>
+                  </form>
+                  <form method="POST" action="/books/detailspassthrough/">
+                    <input type="text" value="<%= JSON.stringify(book) %>" name="bookJSONstring" hidden>
+                    <button type="submit" class="btn btn-primary my-2">Book Details/Coffee Pairing</button>
+                  </form>
+                  </p>
+
+
                 </div>
               </div>
-            <br>
-        <% }) %> 
-        
+            </div>
+          </div>
+          <br>
+          <% }) %>
+
       </div>
     </div>
   </div>
@@ -63,15 +66,18 @@
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-    <a target="_blank" href="https://icons8.com/icon/109144/coffee">Coffee</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    <a target="_blank" href="https://icons8.com/icon/109144/coffee">Coffee</a> icon by <a target="_blank"
+      href="https://icons8.com">Icons8</a>
     <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
+        href="../getting-started/introduction/">getting started guide</a>.</p>
   </div>
 </footer>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      
-  </body>
+
+</body>
+
 </html>
