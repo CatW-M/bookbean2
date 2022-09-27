@@ -2,7 +2,7 @@
 
 Node.js/PostgresSQL book search and coffee recommendation application to Express authentication template using Passport + Flash messages + custom middleware
 
-![Home Screen](/assets/img/homescreen.png)
+![Home Screen](/public/assets/img/homescreen.png)
 
 ![Sample Profile](/assets/img/sampleprofile.png)
 
