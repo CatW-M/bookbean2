@@ -20,7 +20,6 @@ router.post('/detailspassthrough', async (req, res) => {
         const randomIndex = Math.floor(Math.random() * theCoffees.length);
         // console.log('LOOOOOOOOK******', randomIndex);
         const coffeeRecommend = theCoffees[randomIndex];
-        console.log('PIIIIICK ME*********', coffeeRecommend.name);
 
     res.render('books/details', { book, coffee: coffeeRecommend });
 })

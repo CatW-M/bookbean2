@@ -46,7 +46,11 @@ app.get('/', (req, res) => {
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, async (req, res) => {
   const { id, name, email } = req.user.get(); 
-  const the_books = await db.Book.findAll();
+  const the_books = await db.Book.findAll({
+    where: {
+      userId: id
+    }
+  });
   console.log(the_books);
   res.render('profile', { id, name, email, the_books });
 });
@@ -94,6 +98,7 @@ app.get('/mybook/:id', isLoggedIn, async (req, res) => {
 //access to all of our auth routes GET /auth/login, GET /auth/signip POST routes
 app.use('/auth', require('./controllers/auth'));
 app.use('/books', isLoggedIn, require('./controllers/books'));
+app.use('/shop', isLoggedIn, require('./controllers/shop'));
 
 app.get('/*', (req, res) => {
   res.render('404')
