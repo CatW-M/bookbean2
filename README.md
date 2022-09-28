@@ -65,6 +65,12 @@ Node.js/PostgresSQL book search and coffee recommendation application to Express
 | POST | /books/results | book.js | Search Results |
 | PUT | /books/:id | book.js | Deletes Book from user's shelf |
 | GET | /books/* | book.js | 404 error for false routes |
+### Wireframes
+![Wireframe](/public/assets/img/bookbeanwire.png)
+
+### ERD
+
+![ERD](/public/assets/img/bookbeanerd.png)
 
 ### To Install
 
