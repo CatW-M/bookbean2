@@ -1,6 +1,10 @@
 # `Book Bean 2`
 
-Node.js/PostgresSQL book search and coffee recommendation application to Express authentication template using Passport + Flash messages + custom middleware
+##Deployment Link
+
+![Book Bean 2](https://bookbean2.herokuapp.com/)
+
+Node.js/PostgresSQL book search and coffee recommendation application with Express authentication template using Passport + Flash messages + custom middleware
 
 ![Home Screen](/public/assets/img/homescreen.png)
 
