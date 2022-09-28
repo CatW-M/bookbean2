@@ -2,7 +2,7 @@
 
 ##Deployment Link
 
-![Book Bean 2](https://bookbean2.herokuapp.com/)
+#### Hosted on Heroku: https://bookbean2.herokuapp.com/
 
 Node.js/PostgresSQL book search and coffee recommendation application with Express authentication template using Passport + Flash messages + custom middleware
 
@@ -107,6 +107,6 @@ npm install
 ```
 ## Blockers/Future Plans
 I was unable to merge my shop and book search by the deadline. I spent the first week of the project creating a shop. When I created the book search, I should have created it as a branch of the original repo, but did not and it caused major problems trying to reconcile the two projects. My original repo can be found here: 
-[BookBean]([https://link-url-here.org](https://github.com/CatW-M/BookBean))
+#### BookBean Repo: https://github.com/CatW-M/BookBean
 
 Going forward, I would like to add in the shop and also use a scraper to add coffees from local roasters to the database. As I learn more about AI, I would like to create a program that can offer more refined coffee-pairings based on user data.
