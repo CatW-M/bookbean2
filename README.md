@@ -13,13 +13,33 @@ Node.js/PostgresSQL book search and coffee recommendation application to Express
 
 ## What it includes
 
-* Sequelize models / migrations
-* Settings for PostgreSQL
 * Passport and passport-local for authentication
 * Sessions to keep user logged in between pages
 * Flash messages for errors and successes
 * Passwords that are hashed with BCrypt
 * EJS Templating and EJS Layouts
+
+#### What is the application about?
+
+  A book tracking application based on Google books API volumes endpoint. 
+
+  - **Signup Required**: User can search books based on keywords and see the details of the books such as title, author, description...etc.
+    - User have access to their own personal library that includes saved books at the top of the home page.
+    - **Bookshelf**: User can add/move/remove book from their bookshelf.
+    - **Coffee Recommendations**: Once user selects a book, they receive optimal coffee pairings for that book
+    - **Shop**: User can purchase coffee from shop
+
+- #### What Framework/library did I use?
+
+  **Frontend**: 
+
+  ​	- main: javascript, css, bootstrap
+
+  **Backend**: nodeJS, express, axios
+
+  **Database/Management**: Sequelize models / migrations; PostgresSQL
+
+  **API**: Google books Volumes Endpoint
 
 ### User Model
 
@@ -81,4 +101,8 @@ Node.js/PostgresSQL book search and coffee recommendation application to Express
 ```text
 npm install
 ```
+## Blockers/Future Plans
+I was unable to merge my shop and book search by the deadline. I spent the first week of the project creating a shop. When I created the book search, I should have created it as a branch of the original repo, but did not and it caused major problems trying to reconcile the two projects. My original repo can be found here: 
+[BookBean]([https://link-url-here.org](https://github.com/CatW-M/BookBean))
 
+Going forward, I would like to add in the shop and also use a scraper to add coffees from local roasters to the database. As I learn more about AI, I would like to create a program that can offer more refined coffee-pairings based on user data.
