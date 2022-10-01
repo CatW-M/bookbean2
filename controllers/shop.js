@@ -18,13 +18,14 @@ router.get("/", async (req, res) => {
       });
 
   //route to show details for coffees
-  router.get('/detail/:id', (req, res) => {
+  router.get('/product-detail/:id', (req, res) => {
     const coffId = req.params.id;
     db.coffee.findByPk(coffId)
     .then((coffee) => {
-      res.render('shop/detail', {
+      res.render('shop/product-detail', {
         coffee: coffee,
         pageTitle: coffee.name,
+        path: '/coffees'
       });
     })
     .catch(err => console.log(err));
