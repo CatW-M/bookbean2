@@ -1,0 +1,22 @@
+<main>
+<% if (coffs.length > 0) { %> 
+<div class="grid">
+    <% for (let coffee of coffs) { %> 
+<article class="card product-item">
+    <header class="card__header">
+        <h1 class="product__title"><%= coffee.name %></h1>
+    </header>
+    <div class="card__image">
+        <img src="/assets/img/<%=coffee.imgUrl%>" 
+            alt="<%= coffee.name %>">
+    </div>
+    <div class="card__content">
+        <h2 class="product__price">$<%= coffee.price %></h2>
+    </div>
+</article>
+  <%  }  %>  
+</div>
+
+  <%}%> 
+
+</main>
