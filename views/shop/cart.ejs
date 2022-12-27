@@ -1,0 +1,19 @@
+<main>
+    <% if (coffees.length> 0) { %>
+        <ul>
+            <% coffees.forEach(c=> { %>
+                <li>
+                    <p>
+                        <%= c.name %> (<%= c.CartItem.quantity %>)
+                    </p>
+                    <form action="cart-delete-item" method="post">
+                        <button class="btn" type="submit">Delete</button>
+                        <input type="hidden" value="<%=c.id%>" name="coffeeId">
+                    </form>
+                </li>
+                <% }) %>
+            </ul>
+            <% } %>
+            <hr>
+            
+</main>

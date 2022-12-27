@@ -9,6 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 let methodOverride = require('method-override');
 const db = require('./models');
 const book = require('./models/book');
+const CartItem = require('./models/cartitem')
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
@@ -71,15 +72,10 @@ app.put('/profile/:id', isLoggedIn, async (req, res) => {
     });
 
     console.log('********** PUT ROUTE *************');
-    console.log('Users updated', usersUpdated);
-    console.log('***********************');
 
     // redirect back to the profile page
     res.redirect('/profile'); // route
   } catch (error) {
-    console.log('*********************ERROR***********************');
-    console.log(error);
-    console.log('**************************************************');
     res.render('edit');
   }
 });
@@ -89,13 +85,9 @@ app.get('/mybook/:id', isLoggedIn, async (req, res) => {
   });
   book = book.toJSON();
   console.log('===== this is the show route =====');
-  console.log(book);
   const theCoffees = await db.coffee.findAll();
   const randomIndex = Math.floor(Math.random() * theCoffees.length);
-  // console.log('LOOOOOOOOK******', randomIndex);
   const coffeeRecommend = theCoffees[randomIndex];
-  // go to the db and grab one book
-  // render the books/show page with the book
   res.render('mybook', { book, coffee: coffeeRecommend });
 })
 

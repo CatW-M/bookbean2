@@ -31,62 +31,10 @@ router.get("/", async (req, res) => {
     .catch(err => console.log(err));
   });
 
-  router.get('/cart', (req, res) => {
-    req.user.getCart()
-    .then(cart => {
-      return cart.getCoffees()
-    })
-    .then(coffees => {
-      res.render('shop/cart', {
-        pageTitle: 'Cart',
-        coffees: coffees
-      })
-    })
-    .catch(err => console.log(err));
-  });
+  
 
-  router.post('/cart', (req, res) => {
-    const coffId = req.body.coffeeId;
-    let fetchedCart;
-    let newQty = 1;
-    req.user
-      .getCart()
-      .then(cart => {
-        fetchedCart = cart;
-        return cart.getCoffees({
-          where: {
-            id: coffId
-          }
-        });
-      })
-      .then(coffees => {
-        let coffee;
-        if (coffees.length > 0) {
-          coffee = coffees[0];
-        }
-        if (coffee) {
-          const oldQty = coffee.cartItem.quantity;
-          newQty = oldQty +1;
-          return coffee;
-        } else {
-          return coffee.findByPk(coffId);
-        }
-      })
-      .then((coffee) => {
-        return fetchedCart.addCoffee(coffee, {
-          through: {
-            quantity: newQty
-          }
-        });
-      })
-      .then(() => res.redirect('/cart'))
-      .catch(err => console.log(err));
-  });
-
-
-
-// router.get('/*', (req, res) => {
-//     res.render('404')
-//   });
+  router.get('/*', (req, res) => {
+    res.render('404')
+});
 
 module.exports = router;

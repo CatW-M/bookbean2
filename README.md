@@ -105,6 +105,13 @@ Node.js/PostgresSQL book search and coffee recommendation application with Expre
 ```text
 npm install
 ```
+`3` Step 3 Create .env file 
+```
+touch .env
+```
+`4` Add Secret Session Key inside .env file
+```
+SECRET_SESSION=your choice of secret session key
 ## Blockers/Future Plans
 I was unable to merge my shop and book search by the deadline. I spent the first week of the project creating a shop. When I created the book search, I should have created it as a branch of the original repo, but did not and it caused major problems trying to reconcile the two projects. My original repo can be found here: 
 #### BookBean Repo: https://github.com/CatW-M/BookBean

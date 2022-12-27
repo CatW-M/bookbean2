@@ -15,23 +15,17 @@ router.get('/', (req, res) => {
 
 router.post('/detailspassthrough', async (req, res) => {
     let book = JSON.parse(req.body.bookJSONstring);
-    // console.log('*******BOOOK*******', book) ;
     const theCoffees = await db.coffee.findAll();
     const randomIndex = Math.floor(Math.random() * theCoffees.length);
-    // console.log('LOOOOOOOOK******', randomIndex);
     const coffeeRecommend = theCoffees[randomIndex];
-
     res.render('books/details', { book, coffee: coffeeRecommend });
 })
 
 router.get('/details', async (req, res) => {
-
-
     res.render('books/details', { book: JSON.parse(req.body.bookJSONstring) });
 })
 
 router.post('/new', async (req, res) => {
-    console.log('NEWWWWW STUFFFF', req.body);
     const newBook = await db.Book.create({
         title: req.body.title,
         author: req.body.author,
@@ -45,9 +39,6 @@ router.post('/new', async (req, res) => {
 })
 
 router.post('/results', async (req, res) => {
-    console.log('>>>>SEARCH DATA', req.body.search);
-    // we have user input search
-    // make request to the api with that search
     const options = {
         params: {
             q: req.body.search,
@@ -59,10 +50,6 @@ router.post('/results', async (req, res) => {
     }
 
     const results = await axios.get(bookUrl, options);
-    console.log(`Back with book results`);
-    console.log(results.data.items);
-    // console.log(results.data.items[0].volumeInfo.thumbnail);
-
     //render the books/results on page
     res.render('books/results', { books: results.data.items })
 
